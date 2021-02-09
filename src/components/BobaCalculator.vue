@@ -3,9 +3,9 @@
   .item(v-for='(mount, price) in state.order')
     .right.floated.content
       button.ui.button(@click='state.order[price]=0') 清除
-    .middle.aligned.content
-      p(@click='state.order[price]+=1') {{ price}} x {{ mount }}
-  li.item
+    .middle.aligned.content.price(@click='state.order[price]+=1')
+      p {{ mount }} x ${{ price }}
+  .item
     .right.floated.content
       button.ui.button(@click='state.addition=0') 清除
     .middle.aligned.content
@@ -50,14 +50,17 @@ const refresh = () => {
 </script>
 
 <style lang='sass' scoped>
-.list p
-  display: inline
 .list
   height: 90vh
   overflow: auto
   margin: 0 !important
+  p
+    display: inline
+  .price:active
+    p
+      background-color: lightgray
 .item
-  padding: 0em 1em !important
+  padding: 0em .5em !important
 input
   margin: 10px 0px
   width:50%
@@ -74,7 +77,7 @@ input
     padding: 0em 1em
   button
     position: absolute
-    right: 50px
+    right: 25px
     top: 5vh
     transform: translateY(-50%)
 
