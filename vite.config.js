@@ -6,5 +6,10 @@ import vue from '@vitejs/plugin-vue'
  */
 export default {
   plugins: [vue()],
-  hmr: { overlay: false }
+  hmr: { overlay: false },
+  base: './',
+  build:{
+    outDir: 'docs'
+  }
+
 }
