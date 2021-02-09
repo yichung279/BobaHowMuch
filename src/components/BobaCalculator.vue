@@ -1,14 +1,18 @@
 <template lang='pug'>
-ul
-  li(v-for='(mount, price) in state.order')
-    p(@click='state.order[price]+=1') {{ price}} x {{ mount }}
-    p(@click='state.order[price]=0') 清除
-  li
-    p + 
-    input(pattern='[0-9]*', v-model='state.addition')
-    p(@click='state.addition=0') 清除
-p {{ state.total_price }}
-p(@click='refresh') 清除
+.ui.list
+  .item(v-for='(mount, price) in state.order')
+    .right.floated.content
+      button.ui.button(@click='state.order[price]=0') 清除
+    .middle.aligned.content
+      p(@click='state.order[price]+=1') {{ price}} x {{ mount }}
+  li.item
+    .right.floated.content
+      button.ui.button(@click='state.addition=0') 清除
+    .middle.aligned.content
+      input(@click='state.addition=""', pattern='[0-9]*', v-model='state.addition')
+.footer
+  p {{ state.total_price }}
+  button.ui.button(@click='refresh') 清除
 </template>
 
 <script setup>
@@ -46,8 +50,27 @@ const refresh = () => {
 </script>
 
 <style lang='sass' scoped>
-a
-  color: #42b983
-li p
+.list p
   display: inline
+.list
+  height: 90vh
+  overflow: auto
+  margin: 0 !important
+.item
+  padding: 0em 1em !important
+input
+  width:50%
+.footer
+  height: 10.1vh
+  background-color: lightgray
+  position: relative
+  p
+    display: inline
+    padding: 0em 1em
+  button
+    position: absolute
+    right: 50px
+    top: 5vh
+    transform: translateY(-50%)
+
 </style>
