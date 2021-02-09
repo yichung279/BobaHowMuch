@@ -3,6 +3,10 @@ ul
   li(v-for='(mount, price) in state.order')
     p(@click='state.order[price]+=1') {{ price}} x {{ mount }}
     p(@click='state.order[price]=0') 清除
+  li
+    p + 
+    input(pattern='[0-9]*', v-model='state.addition')
+    p(@click='state.addition=0') 清除
 p {{ state.total_price }}
 p(@click='refresh') 清除
 </template>
@@ -23,17 +27,21 @@ const state = reactive({
     '70': 0,
     '75': 0,
   },
+
+  addition: 0,
+
   total_price: computed(()=>{
-    let total_price = 0
+    let total_price = Number(state.addition)
     for(let price in state.order)
       total_price += price * state.order[price]
     return total_price
   })
 })
 
-const refresh = function (){
-    for(let price in state.order)
-      state.order[price] =0
+const refresh = () => {
+  for(let price in state.order)
+    state.order[price] =0
+  state.addition = 0
 }
 </script>
 
