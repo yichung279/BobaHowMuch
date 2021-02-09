@@ -10,7 +10,7 @@
       button.ui.button(@click='state.addition=0') 清除
     .middle.aligned.content
       input(@click='state.addition=""', pattern='[0-9]*', v-model='state.addition')
-.footer
+.-footer
   p {{ state.total_price }}
   button.ui.button(@click='refresh') 清除
 </template>
@@ -63,10 +63,12 @@ input
   width:50%
   height: 50px
   font-size: 40px
-.footer
-  height: 10.1vh
+.-footer
+  height: 10vh
   background-color: lightgray
-  position: relative
+  position: fixed
+  bottom: 0
+  width: 100%
   p
     display: inline
     padding: 0em 1em
