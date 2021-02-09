@@ -59,7 +59,10 @@ const refresh = () => {
 .item
   padding: 0em 1em !important
 input
+  margin: 10px 0px
   width:50%
+  height: 50px
+  font-size: 40px
 .footer
   height: 10.1vh
   background-color: lightgray
