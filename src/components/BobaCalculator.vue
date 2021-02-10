@@ -1,15 +1,11 @@
 <template lang='pug'>
 .ui.list
-  .item(v-for='(mount, price) in state.order')
-    .right.floated.content
-      button.ui.button(@click='state.order[price]=0') 清除
-    .middle.aligned.content.price(@click='state.order[price]+=1')
-      p {{ mount }} x ${{ price }}
-  .item
-    .right.floated.content
-      button.ui.button(@click='state.addition=0') 清除
-    .middle.aligned.content
-      input(@click='state.addition=""', pattern='[0-9]*', v-model='state.addition')
+  .item.flex(v-for='(mount, price) in state.order')
+    p.flex-item(@click='state.order[price]+=1') {{ mount }} x ${{ price }}
+    button.ui.large.button.flex-item(@click='state.order[price]=0') 清除
+  .item.flex
+    input.flex-item(@click='state.addition=""', pattern='[0-9]*', v-model='state.addition')
+    button.ui.button.flex-item(@click='state.addition=0') 清除
 .-footer
   p {{ state.total_price }}
   button.ui.button(@click='refresh') 清除
@@ -51,21 +47,28 @@ const refresh = () => {
 
 <style lang='sass' scoped>
 .list
-  height: 90vh
+  width: 100%
+  position: absolute
+  top: 0
+  bottom: 10vh
   overflow: auto
   margin: 0 !important
-  p
-    display: inline
-  .price:active
-    p
-      background-color: lightgray
-.item
-  padding: 0em .5em !important
+  .item
+    padding: 0 !important
+.flex
+  display: flex !important
+  justify-content: center
+  .flex-item
+    margin: auto
+
 input
-  margin: 10px 0px
-  width:50%
+  margin-bottom: 10px !important
+  margin-top: 10px !important
+  width: 4.5em
   height: 50px
   font-size: 40px
+input + button
+
 .-footer
   height: 10vh
   background-color: lightgray
