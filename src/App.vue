@@ -15,5 +15,5 @@ import BobaCalculator from './components/BobaCalculator.vue'
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 *
-  font-size: 50px
+  font-size: 32px
 </style>

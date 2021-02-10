@@ -53,6 +53,7 @@ const refresh = () => {
   bottom: 10vh
   overflow: auto
   margin: 0 !important
+  margin-top: .5em !important
   .item
     padding: 0 !important
 .flex
@@ -64,10 +65,8 @@ const refresh = () => {
 input
   margin-bottom: 10px !important
   margin-top: 10px !important
-  width: 4.5em
-  height: 50px
-  font-size: 40px
-input + button
+  width: 3em
+  height: 1.5em
 
 .-footer
   height: 10vh
